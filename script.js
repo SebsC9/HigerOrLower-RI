@@ -18,6 +18,9 @@ const record = document.getElementById('record');
 let puntaje = 0;
 let recordPuntaje = 0;
 
+let paisActual;
+let paisNuevo;
+
 btnComenzar.addEventListener('click', () => {
     header.classList.remove('hidden');
     introSection.classList.add('hidden');
@@ -26,42 +29,48 @@ btnComenzar.addEventListener('click', () => {
 });
 
 const paises = [
-    { nombre: 'Argentina', poblacion: 45195777, bandera: 'Paises/Argentina.png' },
-    { nombre: 'Brasil', poblacion: 213993437, bandera: 'Paises/Brasil.png' },
-    { nombre: 'Chile', poblacion: 19116209, bandera: 'Paises/Chile.png' },
-    { nombre: 'Colombia', poblacion: 50882891, bandera: 'Paises/Colombia.png' },
-    { nombre: 'Perú', poblacion: 33816648, bandera: 'Paises/Peru.png' },
-    { nombre: 'Venezuela', poblacion: 28435943, bandera: 'Paises/Venezuela.png' },
-    { nombre: 'Uruguay', poblacion: 3473730, bandera: 'Paises/Uruguay.png' },
-    { nombre: 'Bolivia', poblacion: 11673029, bandera: 'Paises/Bolivia.png' },
-    { nombre: 'Ecuador', poblacion: 17643060, bandera: 'Paises/Ecuador.png' },
-    { nombre: 'Paraguay', poblacion: 7132530, bandera: 'Paises/Paraguay.png' },
-    { nombre: 'Guyana', poblacion: 786559, bandera: 'Paises/Guyana.png' },
-    { nombre: 'Surinam', poblacion: 586634, bandera: 'Paises/Surinam.png' },
-    { nombre: 'Panamá', poblacion: 4314768, bandera: 'Paises/Panamá.png' },
-    { nombre: 'Costa Rica', poblacion: 5390521, bandera: 'Paises/Costa-Rica.png' },
-    { nombre: 'Nicaragua', poblacion: 6624554, bandera: 'Paises/Nicaragua.png' },
-    { nombre: 'Honduras', poblacion: 10039107, bandera: 'Paises/Honduras.png' },
-    { nombre: 'El Salvador', poblacion: 6486201, bandera: 'Paises/El-Salvador.png' },
-    { nombre: 'Guatemala', poblacion: 17915568, bandera: 'Paises/Guatemala.png' },
-    { nombre: 'México', poblacion: 126190788, bandera: 'Paises/Mexico.png' },
-    { nombre: 'Cuba', poblacion: 11326616, bandera: 'Paises/Cuba.png' },
-    { nombre: 'República Dominicana', poblacion: 10847910, bandera: 'Paises/Republica-Dominicana.png' },
-    { nombre: 'Puerto Rico', poblacion: 3193694, bandera: 'Paises/Puerto-Rico.png' },
-    { nombre: 'Jamaica', poblacion: 2961161, bandera: 'Paises/Jamaica.png' },
-    { nombre: 'Trinidad y Tobago', poblacion: 1399491, bandera: 'Paises/Trinidad-y-Tobago.png' }
+    { nombre: 'Argentina', poblacion: 45195777, bandera: 'Paises/ar.webp' },
+    { nombre: 'Brasil', poblacion: 213993437, bandera: 'Paises/br.webp' },
+    { nombre: 'Chile', poblacion: 19116209, bandera: 'Paises/cl.webp' },
+    { nombre: 'Colombia', poblacion: 50882891, bandera: 'Paises/co.webp' },
+    { nombre: 'Perú', poblacion: 33816648, bandera: 'Paises/pe.webp' },
+    { nombre: 'Venezuela', poblacion: 28435943, bandera: 'Paises/ve.webp' },
+    { nombre: 'Uruguay', poblacion: 3473730, bandera: 'Paises/uy.webp' },
+    { nombre: 'Bolivia', poblacion: 11673029, bandera: 'Paises/bo.webp' },
+    { nombre: 'Ecuador', poblacion: 17643060, bandera: 'Paises/ec.webp' },
+    { nombre: 'Paraguay', poblacion: 7132530, bandera: 'Paises/py.webp' },
+    { nombre: 'Guyana', poblacion: 786559, bandera: 'Paises/gy.webp' },
+    { nombre: 'Surinam', poblacion: 586634, bandera: 'Paises/sr.webp' },
+    { nombre: 'Panamá', poblacion: 4314768, bandera: 'Paises/pa.webp' },
+    { nombre: 'Costa Rica', poblacion: 5390521, bandera: 'Paises/cr.webp' },
+    { nombre: 'Nicaragua', poblacion: 6624554, bandera: 'Paises/ni.webp' },
+    { nombre: 'Honduras', poblacion: 10039107, bandera: 'Paises/hn.webp' },
+    { nombre: 'El Salvador', poblacion: 6486201, bandera: 'Paises/sv.webp' },
+    { nombre: 'Guatemala', poblacion: 17915568, bandera: 'Paises/gt.webp' },
+    { nombre: 'México', poblacion: 126190788, bandera: 'Paises/mx.webp' },
+    { nombre: 'Cuba', poblacion: 11326616, bandera: 'Paises/cu.webp' },
+    { nombre: 'República Dominicana', poblacion: 10847910, bandera: 'Paises/do.webp' },
+    { nombre: 'Puerto Rico', poblacion: 3193694, bandera: 'Paises/pr.webp' },
+    { nombre: 'Jamaica', poblacion: 2961161, bandera: 'Paises/jm.webp' },
+    { nombre: 'Trinidad y Tobago', poblacion: 1399491, bandera: 'Paises/tt.webp' }
 ];
 
 function seleccionarPaisActual() {
-    const paisActual = paises[Math.floor(Math.random() * paises.length)];
+    paisActual = paises[Math.floor(Math.random() * paises.length)];
     namePaisActual.textContent = `${paisActual.nombre}: ${paisActual.poblacion.toLocaleString()}`;
     banderaPaisActual.src = paisActual.bandera;
 }
 function seleccionarPaisNuevo() {
-    const paisNuevo = paises[Math.floor(Math.random() * paises.length)];
-    namePaisNuevo.textContent = paisNuevo.nombre;
+    let nuevoPaisSeleccionado;
+    do {
+        nuevoPaisSeleccionado = paises[Math.floor(Math.random() * paises.length)];
+    } while (nuevoPaisSeleccionado === paisActual);
+
+    paisNuevo = nuevoPaisSeleccionado;
+    namePaisNuevo.textContent = `${paisNuevo.nombre}`;
     banderaPaisNuevo.src = paisNuevo.bandera;
 }
+
 
 function iniciarJuego() {
     puntaje = 0;
@@ -69,5 +78,43 @@ function iniciarJuego() {
     record.textContent = `Record: ${recordPuntaje}`;
 
     seleccionarPaisActual();
+    seleccionarPaisNuevo();
+};
+
+btnMayor.addEventListener('click', () => {
+    if (paisNuevo.poblacion > paisActual.poblacion) {
+        puntaje++;
+        puntajeActual.textContent = `Puntaje: ${puntaje}`;
+        if (puntaje > recordPuntaje) {
+            recordPuntaje = puntaje;
+            record.textContent = `Record: ${recordPuntaje}`;
+        }
+        siguienteRonda();
+    } else {
+        alert('¡Incorrecto! La poblacion de ' + paisNuevo.nombre + ' es de ' + paisNuevo.poblacion.toLocaleString() + '.');
+        iniciarJuego();
+    }
+});
+
+btnMenor.addEventListener('click', () => {
+    if (paisNuevo.poblacion < paisActual.poblacion) {
+        puntaje++;
+        puntajeActual.textContent = `Puntaje: ${puntaje}`;
+        if (puntaje > recordPuntaje) {
+            recordPuntaje = puntaje;
+            record.textContent = `Record: ${recordPuntaje}`;
+        }
+        siguienteRonda();
+    } else {
+        alert('¡Incorrecto! La poblacion de ' + paisNuevo.nombre + ' es de ' + paisNuevo.poblacion.toLocaleString() + '.');
+        iniciarJuego();
+    }
+});
+
+function siguienteRonda() {
+    paisActual = paisNuevo;
+    namePaisActual.textContent = `${paisActual.nombre}: ${paisActual.poblacion.toLocaleString()}`;
+    banderaPaisActual.src = paisActual.bandera;
+
     seleccionarPaisNuevo();
 }

@@ -6,9 +6,12 @@ body {
     background-color: #f0f0f0;
     color: #000000;
     margin: 0;
-    padding: 0px;
+    padding: 0;
     min-height: 100vh;
     background: linear-gradient(to bottom right, #0077B6, #2A9D8F);
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
 }
 
 h1 {
@@ -17,22 +20,38 @@ h1 {
 }
 
 h2 {
-    font-size: 2em;
-    margin-bottom: 10px;
-}
-
-h3 {
     font-size: 1.5em;
     margin-bottom: 10px;
 }
 
-p {
+h3 {
     font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1em;
     margin: 10px 0;
+}
+
+@media (min-width: 768px) {
+    h2 {
+        font-size: 2em;
+    }
+    h3 {
+        font-size: 1.5em;
+    }
+    p {
+        font-size: 1.2em;
+    }
 }
 
 /*Header*/
 .header {
+    width: 100%;
+    padding: 10px 15px;
+    background-color: #00283d;
+    color: white;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -42,22 +61,37 @@ p {
 .header p {
     margin: 0;
 }
+@media (min-width: 768px) {
+    .header {
+        padding: 15px 50px;
+    }
+     
+}
 
 /*Main*/
 main {
     flex: 1;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    margin-top: 20px;
+    justify-content: center;
+    width: 100%;
+    padding-top: 60px;
+    box-sizing: border-box;
 }
 
 /*Intro*/
 .intro {
     text-align: center;
-    margin-top: 20px;
+    padding: 20px;
+    width: 90%;
+    max-width: max-content;
 }
 .intro-titulo {
     font-size: 3em;
     margin-bottom: 20px;
+    margin-top: auto;
+    max-width: 100%;
 }
 
 
@@ -73,6 +107,7 @@ footer {
     footer{
         display: flex;
         justify-content: space-between;
+        padding: 15px 50px;
     }
      
 }
@@ -82,14 +117,18 @@ button {
     background-color: #00283d9f;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 12px 25px;
     font-size: 1.2em;
     cursor: pointer;
     border-radius: 5px;
     margin: 10px 0;
+    max-width: 80%;
+    max-width: 300px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 button:hover {
     background-color: #005f73;
+    transform: translateY(-2px);
 }
 
 /*Hidden*/
@@ -99,9 +138,44 @@ button:hover {
 
 
 /*Juego*/
-#game {
+
+#game{
+    width: 95%;
+    max-width: 900px;
+    padding: 20px;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    box-sizing: border-box;
+}
+
+.paises-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.carta {
+    padding: 15px;
+    width: 90%;
+    max-width: 300px;
+    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px;
+}
+
+.carta img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.opciones {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
