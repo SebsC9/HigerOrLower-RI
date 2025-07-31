@@ -15,6 +15,14 @@ const banderaPaisNuevo = document.getElementById('bandera-pais-nuevo');
 const puntajeActual = document.getElementById('puntaje-actual');
 const record = document.getElementById('record');
 
+const restartSection = document.getElementById('restart');
+const derrotaInfo = document.getElementById('derrota-info');
+const puntajeFinal = document.getElementById('puntaje-final');
+const recordFinal = document.getElementById('record-final');
+const reiniciarBtn = document.getElementById('reiniciar-btn');
+const menuBtn = document.getElementById('menu-btn');
+
+
 let puntaje = 0;
 let recordPuntaje = 0;
 
@@ -81,35 +89,15 @@ function iniciarJuego() {
     seleccionarPaisNuevo();
 };
 
-btnMayor.addEventListener('click', () => {
-    if (paisNuevo.poblacion > paisActual.poblacion) {
-        puntaje++;
-        puntajeActual.textContent = `Puntaje: ${puntaje}`;
-        if (puntaje > recordPuntaje) {
-            recordPuntaje = puntaje;
-            record.textContent = `Record: ${recordPuntaje}`;
-        }
-        siguienteRonda();
-    } else {
-        alert('¡Incorrecto! La poblacion de ' + paisNuevo.nombre + ' es de ' + paisNuevo.poblacion.toLocaleString() + '.');
-        iniciarJuego();
-    }
-});
+function gameOver() {
+    header.classList.add('hidden');
+    gameSection.classList.add('hidden');
+    restartSection.classList.remove('hidden');
 
-btnMenor.addEventListener('click', () => {
-    if (paisNuevo.poblacion < paisActual.poblacion) {
-        puntaje++;
-        puntajeActual.textContent = `Puntaje: ${puntaje}`;
-        if (puntaje > recordPuntaje) {
-            recordPuntaje = puntaje;
-            record.textContent = `Record: ${recordPuntaje}`;
-        }
-        siguienteRonda();
-    } else {
-        alert('¡Incorrecto! La poblacion de ' + paisNuevo.nombre + ' es de ' + paisNuevo.poblacion.toLocaleString() + '.');
-        iniciarJuego();
-    }
-});
+    derrotaInfo.textContent = `La población de ${paisActual.nombre} es de ${paisActual.poblacion.toLocaleString()}.`;
+    puntajeFinal.textContent = `Puntaje Final: ${puntaje}`;
+    recordFinal.textContent = `Record: ${recordPuntaje}`;
+}
 
 function siguienteRonda() {
     paisActual = paisNuevo;
@@ -118,3 +106,57 @@ function siguienteRonda() {
 
     seleccionarPaisNuevo();
 }
+
+function revelarPoblacion(callback) {
+    namePaisNuevo.textContent = `${paisNuevo.nombre}: ${paisNuevo.poblacion.toLocaleString()}`;
+    
+    setTimeout(callback, 1000);
+}
+
+btnMayor.addEventListener('click', () => {
+    revelarPoblacion(() => {
+        if (paisNuevo.poblacion > paisActual.poblacion) {
+            puntaje++;
+            puntajeActual.textContent = `Puntaje: ${puntaje}`;
+            if (puntaje > recordPuntaje) {
+                recordPuntaje = puntaje;
+                record.textContent = `Record: ${recordPuntaje}`;
+            }
+            siguienteRonda();
+        } else {
+            gameOver();
+        }
+    });
+});
+
+btnMenor.addEventListener('click', () => {
+    revelarPoblacion(() => {
+        if (paisNuevo.poblacion < paisActual.poblacion) {
+            puntaje++;
+            puntajeActual.textContent = `Puntaje: ${puntaje}`;
+            if (puntaje > recordPuntaje) {
+                recordPuntaje = puntaje;
+                record.textContent = `Record: ${recordPuntaje}`;
+            }
+            siguienteRonda();
+        } else {
+            gameOver();
+        }
+    });
+});
+
+
+
+reiniciarBtn.addEventListener('click', () => {
+    restartSection.classList.add('hidden');
+    header.classList.remove('hidden');
+    gameSection.classList.remove('hidden');
+    iniciarJuego();
+});
+
+menuBtn.addEventListener('click', () => {
+    restartSection.classList.add('hidden');
+    header.classList.remove('hidden');
+    introSection.classList.remove('hidden');
+    iniciarJuego();
+});

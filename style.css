@@ -1,17 +1,25 @@
 /*Generales*/
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    overflow: hidden;
+    height: 100%;
+}
+
 body {
     display: flex;
     flex-direction: column;
     font-family: 'Roboto', sans-serif;
     background-color: #f0f0f0;
     color: #000000;
-    margin: 0;
-    padding: 0;
     min-height: 100vh;
     background: linear-gradient(to bottom right, #0077B6, #2A9D8F);
     align-items: center;
     justify-content: center;
-    box-sizing: border-box;
 }
 
 h1 {
@@ -75,7 +83,6 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
     padding-top: 60px;
     box-sizing: border-box;
 }
@@ -90,7 +97,6 @@ main {
 .intro-titulo {
     font-size: 3em;
     margin-bottom: 20px;
-    margin-top: auto;
     max-width: 100%;
 }
 
@@ -145,19 +151,22 @@ button:hover {
     padding: 20px;
     flex-direction: column;
     align-items: center;
-    gap: 30px;
+    gap: 20px;
     box-sizing: border-box;
+    margin : 0 auto;
 }
 
 .paises-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
     gap: 20px;
+    justify-content: center;
     width: 100%;
 }
 
 .carta {
+    height: auto;
     padding: 15px;
     width: 90%;
     max-width: 300px;
@@ -165,10 +174,11 @@ button:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 0 auto;
 }
 
 .carta img {
-    width: 100%;
+    max-width: 100%;
     height: auto;
     border-radius: 8px;
 }
@@ -178,4 +188,52 @@ button:hover {
     flex-direction: column;
     align-items: center;
     gap: 10px;
+}
+
+@media (min-width: 768px) {
+    .carta {
+        width: 80%;
+        max-width: 400px;
+    }
+    .opciones {
+        flex-direction: row;
+        justify-content: center;
+        gap: 20px;
+    }
+     
+}
+
+/* ---Restart--- */
+#restart {
+    text-align: center;
+    padding: 20px;
+    width: 90%;
+    max-width: max-content;
+}
+
+.perdiste-titulo {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: rgba(139, 33, 33, 0.884);
+}
+
+.restart-btns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.derrota-info {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+@media (min-width: 768px) {
+    .perdiste-titulo {
+        font-size: 2.5em;
+    }
+    .derrota-info {
+        font-size: 1.5em;
+    }
 }
