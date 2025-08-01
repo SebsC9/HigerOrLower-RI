@@ -1,4 +1,4 @@
-# Actividad de receso invernar, HIGER OR LOWER
+# Actividad de receso invernal, HIGER OR LOWER
 
 Este es mi proyecto de receso invernal, hecho con HTML, CSS y Js puro.
 Esta basado en el famoso juego Higer or Lower, pero con la diferencia que el tenes que adivinar que pais tiene mayor o menor poblacion
