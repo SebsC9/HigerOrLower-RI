@@ -94,7 +94,7 @@ function gameOver() {
     gameSection.classList.add('hidden');
     restartSection.classList.remove('hidden');
 
-    derrotaInfo.textContent = `La población de ${paisActual.nombre} es de ${paisActual.poblacion.toLocaleString()}.`;
+    derrotaInfo.textContent = `La población de ${paisNuevo.nombre} es de ${paisNuevo.poblacion.toLocaleString()} y la de ${paisActual.nombre} es de ${paisActual.poblacion.toLocaleString()}.`;
     puntajeFinal.textContent = `Puntaje Final: ${puntaje}`;
     recordFinal.textContent = `Record: ${recordPuntaje}`;
 }

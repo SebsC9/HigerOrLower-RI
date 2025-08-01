@@ -6,7 +6,6 @@
 }
 
 html, body {
-    overflow: hidden;
     height: 100%;
 }
 
@@ -146,14 +145,20 @@ button:hover {
 /*Juego*/
 
 #game{
+    display: flex;
+    flex-direction: column;
     width: 95%;
-    max-width: 900px;
+    max-width: 1100px;
     padding: 20px;
     flex-direction: column;
     align-items: center;
     gap: 20px;
     box-sizing: border-box;
     margin : 0 auto;
+}
+
+#game.hidden {
+    display: none;
 }
 
 .paises-container {
@@ -179,6 +184,7 @@ button:hover {
 
 .carta img {
     max-width: 100%;
+    max-width: 280px;
     height: auto;
     border-radius: 8px;
 }
@@ -191,16 +197,31 @@ button:hover {
 }
 
 @media (min-width: 768px) {
-    .carta {
-        width: 80%;
-        max-width: 400px;
+    #game {
+        max-width: 1400px;
     }
-    .opciones {
-        flex-direction: row;
-        justify-content: center;
-        gap: 20px;
-    }
-     
+
+   .paises-container{
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+   }
+
+   .carta {
+    flex: 1;
+        max-width: 500px;
+   }
+
+   .carta img {
+        max-width: 450px;
+        height: auto;
+   }
+
+   .opciones {
+        flex-direction: column;
+        gap: 15px;
+   }
 }
 
 /* ---Restart--- */
