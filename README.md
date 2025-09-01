@@ -6,13 +6,13 @@ Al acertar sumas puntos, y se guardara tu record en caso de perder
 
 ---
 
-##Tecnologia Usada
+Tecnologia Usada
 - Aplique event listeners para los botones, como comenzar, mayor, menor, etc.
 - En el css use flexbox y un diseño responsive usando el Mobile First para mas facilidad
 
 ---
 
-##Como jugar
+Como jugar
 1. En el menu ademas de ver de lo que trata el juego veras el boton de Comenzar, hacer click en el mismo.
 2.  Se mostraran dos paises, el 1ero es te mostrara la poblacion y el 2 es el que debes decidir si es mayor o menor.
 3.  Decidir segun lo que creas
