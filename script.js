@@ -113,6 +113,15 @@ function revelarPoblacion(callback) {
     setTimeout(callback, 1000);
 }
 
+
+function cargarRecordDeLocalStorage() {
+    const recordGuardado = localStorage.getItem('recordPuntaje');
+    if (recordGuardado) {
+        recordPuntaje = parseInt(recordGuardado);
+        record.textContent = `Record: ${recordPuntaje}`;
+    }
+}
+
 btnMayor.addEventListener('click', () => {
     revelarPoblacion(() => {
         if (paisNuevo.poblacion > paisActual.poblacion) {
@@ -160,3 +169,5 @@ menuBtn.addEventListener('click', () => {
     introSection.classList.remove('hidden');
     iniciarJuego();
 });
+
+cargarRecordDeLocalStorage();
